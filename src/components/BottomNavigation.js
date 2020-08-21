@@ -3,16 +3,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
+
 import { Link } from "react-router-dom";
-import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
     width: "100vw",
+    height: "10%",
+    background: "linear-gradient(to right, red , yellow)",
   },
 });
+const LinkUI = React.forwardRef((props, ref) => (
+  <Link ref={ref} to="/" {...props} />
+));
 
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
@@ -20,18 +23,26 @@ export default function SimpleBottomNavigation() {
 
   return (
     <BottomNavigation
+      className={classes.root}
       value={value}
+      showLabels
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
-      className={classes.root}
     >
-      <Link to="/">
-        <BottomNavigationAction icon={<RestoreIcon />} />
-      </Link>
-      <Link to="/about">
-        <BottomNavigationAction icon={<FavoriteIcon />} />
-      </Link>
+      <BottomNavigationAction
+        label="Hjem"
+        icon={<RestoreIcon />}
+        component={LinkUI}
+        to="/"
+      />
+
+      <BottomNavigationAction
+        label="Tjenester"
+        icon={<RestoreIcon />}
+        component={LinkUI}
+        to="/about"
+      />
     </BottomNavigation>
   );
 }
