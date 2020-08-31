@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Zoom from "@material-ui/core/Zoom";
-import Card from "@material-ui/core/Card";
+
 import { CardMedia } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
+
+import BottomNav from "../../components/BottomNavigation";
 
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
@@ -17,13 +19,14 @@ import Logo from "../../components/logo";
 
 const useStyles = makeStyles((theme) => ({
   boxContainer: {
+    justifyContent: "space-between",
+    alignItems: "center",
     display: "flex",
     flexDirection: "column",
     width: "100vw",
-    height: "90%",
+    height: "100%",
     backgroundColor: "#2d3436",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
-    padding: 0,
   },
   card: {
     margin: 8,
@@ -167,6 +170,7 @@ const About = () => {
             </div>
           </Fade>
         </Modal>
+        <BottomNav />
       </Box>
     </Zoom>
   );

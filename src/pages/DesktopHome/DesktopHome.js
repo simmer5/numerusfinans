@@ -5,27 +5,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import Zoom from "@material-ui/core/Zoom";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import BottomNav from "../../components/BottomNavigation";
 
-import Logo from "../../components/logo";
+import TopNav from "../../components/TopNavigation";
+import ContactIcons from "../../components/ContactIcons";
+
+import Logo from "../../Logo/LogoWhite";
 
 const useStyles = makeStyles({
-  box: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100vw",
-    height: "100%",
-    backgroundColor: "#2d3436",
-    backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
-    justifyContent: "space-between",
+  contentContainer: {
     alignItems: "center",
-  },
-  mobContentContainer: {
+    backgroundColor: "#171717",
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: "100vh",
+    minHeight: "85vh",
     justifyContent: "center",
   },
   typo: {
@@ -41,23 +35,25 @@ const useStyles = makeStyles({
     borderStyle: "solid",
   },
 });
-const Home = () => {
+const DesktopHome = () => {
   const classes = useStyles();
   return (
-    <Zoom in={true}>
-      <Box component="div" className={classes.box}>
-        <Box className={classes.mobContentContainer}>
+    <>
+      <TopNav />
+      <Zoom in={true}>
+        <Box className={classes.contentContainer}>
           <Logo width="45vw" />
           <Divider className={classes.divider} />
           <Typography align="center" className={classes.typo}>
-            Regnskap tjenester for stotre og melomstire bedrifter
+            Regnskap tjenester for stotre og melomstore bedrifter
           </Typography>
+          <Box>
+            <ContactIcons long />
+          </Box>
         </Box>
-
-        <BottomNav />
-      </Box>
-    </Zoom>
+      </Zoom>
+    </>
   );
 };
 
-export default Home;
+export default DesktopHome;
