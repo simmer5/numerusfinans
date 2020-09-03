@@ -4,34 +4,49 @@ import MailIcon from "@material-ui/icons/Mail";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
-import Fade from "@material-ui/core/Fade";
 import Popover from "@material-ui/core/Popover";
 
-const useStyles = makeStyles({
-  iContainer: { display: "flex", flexDirection: "row" },
-  iContainerShort: {
-    display: "flex",
-    width: "100%",
-    height: "100%",
-    position: "relative",
+const useStyles = makeStyles(
+  {
+    root: { top: "210px" },
+    paper: {
+      border: "2px solid #00A6FF",
+      backgroundColor: "#171717",
+      marginTop: "1rem",
+    },
+
+    iContainer: { display: "flex", flexDirection: "row" },
+    iContainerShort: {
+      display: "flex",
+      width: "100%",
+      height: "100%",
+    },
+    iFrame: {
+      background: "none",
+      color: "#00a6ff",
+      border: "4px solid white",
+      margin: "1rem",
+      padding: "1rem",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      // width: "15vw",
+      transition: "all 300ms ease 0s",
+      "&:hover": {
+        borderStyle: "solid",
+        borderImage:
+          "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,50,231,1) 57%, rgba(0,212,255,1) 100%) 1",
+        transform: "scale(1.01)",
+        cursor: "pointer",
+      },
+    },
+    popTitle: {
+      padding: "1rem",
+      color: "#00a6ff",
+    },
   },
-  iFrame: {
-    background: "none",
-    color: "#00a6ff",
-    border: "4px solid white",
-    margin: "1rem",
-    padding: "1rem",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    // width: "15vw",
-  },
-  iText: {
-    marginLeft: "1rem",
-  },
-  iModal: { position: "absolute" },
-});
+  { name: "MuiPopover" }
+);
 const ContactIcons = ({ long, short }) => {
   const classes = useStyles();
 
@@ -39,6 +54,7 @@ const ContactIcons = ({ long, short }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpen = (e) => {
+    //const kablys = document.querySelector("#kablys");
     setAnchorEl(e.currentTarget);
     setValue(e.currentTarget.value);
   };
@@ -46,7 +62,7 @@ const ContactIcons = ({ long, short }) => {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  //const id = open ? "simple-popover" : undefined;
 
   return (
     <>
@@ -54,7 +70,6 @@ const ContactIcons = ({ long, short }) => {
         <Box className={classes.iContainer}>
           <Box className={classes.iFrame}>
             <CallIcon />
-
             <Box className={classes.iText}> +47 401 72372</Box>
           </Box>
           <Box className={classes.iFrame}>
@@ -80,6 +95,7 @@ const ContactIcons = ({ long, short }) => {
               <CallIcon />
             </Box>
             <Box
+              id="kablys"
               component="button"
               className={classes.iFrame}
               onClick={handleOpen}
@@ -95,35 +111,23 @@ const ContactIcons = ({ long, short }) => {
             >
               <LocationOnIcon />
             </Box>
-            <Box>
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "center",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "center",
-                }}
-              >
-                <div>{value}</div>
-              </Popover>
-            </Box>
-            {/* <Modal
-              component="div"
-              open={open}
-              onClose={handleClose}
+
+            <Popover
               disablePortal={true}
-              className={classes.iModal}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
             >
-              <Fade in={open}>
-                <div>{value}</div>
-              </Fade>
-            </Modal> */}
+              <div className={classes.popTitle}>{value}</div>
+            </Popover>
           </Box>
         </>
       )}

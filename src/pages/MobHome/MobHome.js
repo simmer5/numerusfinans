@@ -7,26 +7,31 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import BottomNav from "../../components/BottomNavigation";
 
+import ContactIcons from "../../components/ContactIcons";
 import Logo from "../../components/logo";
 
 const useStyles = makeStyles({
-  box: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100vw",
-    height: "100%",
+  mobContainer: {
     backgroundColor: "#2d3436",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  mobContentContainer: {
-    width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     height: "100vh",
+    //justifyContent: "center",
+  },
+  mobContentContainer: {
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "column",
+    alignItems: "center",
     justifyContent: "center",
+  },
+  navContainer: {
+    flexGrow: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
   },
   typo: {
     color: "white",
@@ -40,24 +45,32 @@ const useStyles = makeStyles({
     borderWidth: "1px 0 0 0",
     borderStyle: "solid",
   },
+
+  iContainer: {
+    margin: "1.5rem",
+  },
 });
-const Home = () => {
+const MobHome = () => {
   const classes = useStyles();
   return (
-    <Zoom in={true}>
-      <Box component="div" className={classes.box}>
+    <Box className={classes.mobContainer}>
+      <Zoom in={true}>
         <Box className={classes.mobContentContainer}>
           <Logo width="45vw" />
           <Divider className={classes.divider} />
           <Typography align="center" className={classes.typo}>
             Regnskap tjenester for stotre og melomstire bedrifter
           </Typography>
+          <Box className={classes.iContainer}>
+            <ContactIcons short />
+          </Box>
         </Box>
-
+      </Zoom>
+      <Box className={classes.navContainer}>
         <BottomNav />
       </Box>
-    </Zoom>
+    </Box>
   );
 };
 
-export default Home;
+export default MobHome;

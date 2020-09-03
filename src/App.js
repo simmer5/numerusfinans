@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Home from "../src/pages/Home/";
-import About from "../src/pages/About";
+import MobHome from "../src/pages/MobHome";
+import MobTjenester from "../src/pages/MobTjenester";
 import DesktopTjenester from "./pages/DesktopTlenester";
 import "./App.css";
 import DesktopHome from "./pages/DesktopHome";
@@ -8,7 +8,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 620;
+  const breakpoint = 720;
 
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth);
@@ -21,11 +21,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {width < breakpoint ? <Home /> : <DesktopHome />}
+            {width < breakpoint ? <MobHome /> : <DesktopHome />}
           </Route>
 
           <Route path="/about">
-            {width < breakpoint ? <About /> : <DesktopTjenester />}
+            {width < breakpoint ? <MobTjenester /> : <DesktopTjenester />}
           </Route>
         </Switch>
       </BrowserRouter>

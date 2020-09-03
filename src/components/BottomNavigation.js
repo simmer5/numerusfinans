@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     width: "100vw",
-    height: "10%",
-    background: "linear-gradient(to right, red , yellow)",
+    //height: "10%",
+    backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
   },
 });
 const LinkUI = React.forwardRef((props, ref) => (
@@ -26,7 +26,7 @@ export default function SimpleBottomNavigation() {
       className={classes.root}
       value={value}
       showLabels
-      onChange={(event, newValue) => {
+      onChange={(e, newValue) => {
         setValue(newValue);
       }}
     >

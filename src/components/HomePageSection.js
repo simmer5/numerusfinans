@@ -7,19 +7,18 @@ import ContactIcons from "../components/ContactIcons";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  item: {
+  section: {
     borderBottom: "10px solid white",
-    color: "white",
     background: "#171717",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    // fontSize: "6vw",
     scrollSnapAlign: "center",
   },
   contentContainer: {
+    marginTop: "20vh",
+    alignSelf: "center",
     border: "4px solid white",
     padding: "1.5rem",
     transition: "all 300ms ease 0s",
@@ -52,6 +51,10 @@ const useStyles = makeStyles({
   closeIcon: {
     alignSelf: "flex-end",
   },
+  ContactIconsContainer: {
+    alignSelf: "flex-end",
+    margin: "1rem",
+  },
 });
 
 const HomePageSection = ({ title, description }) => {
@@ -67,8 +70,8 @@ const HomePageSection = ({ title, description }) => {
     setOpen(false);
   };
   return (
-    <Box className={classes.item}>
-      <Box>
+    <Box className={classes.section}>
+      <Box className={classes.ContactIconsContainer}>
         <ContactIcons short />
       </Box>
       <Box className={classes.contentContainer} onClick={handleOpen}>
