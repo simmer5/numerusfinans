@@ -8,7 +8,7 @@ import HomePageSection from "../../components/HomePageSection";
 
 const useStyles = makeStyles({
   boxContentContainer: {
-    maxHeight: "100vh",
+    maxHeight: "85vh",
     overflow: "scroll",
     overflowX: "hidden",
     //overflowY: "hidden",
@@ -55,6 +55,7 @@ const DesktopTjenester = () => {
         <Box className={classes.boxContentContainer} component="div">
           {data.map((item, idx) => (
             <HomePageSection
+              web
               key={idx}
               title={item.title}
               description={item.description}

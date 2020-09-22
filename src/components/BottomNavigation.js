@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, forwardRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -7,42 +7,46 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
-  root: {
+  bottomNav: {
     width: "100vw",
-    //height: "10%",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
+    flexGrow: 0,
+    alignSelf: "stretch",
+    height: "12vh",
   },
 });
-const LinkUI = React.forwardRef((props, ref) => (
-  <Link ref={ref} to="/" {...props} />
+const LinkUI = forwardRef((props, ref) => (
+  <Link ref={ref} to="to" {...props} />
 ));
 
-export default function SimpleBottomNavigation() {
+const SimpleBottomNavigation = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   return (
     <BottomNavigation
-      className={classes.root}
-      value={value}
+      className={classes.bottomNav}
+      value={selectedTab}
       showLabels
       onChange={(e, newValue) => {
-        setValue(newValue);
+        setSelectedTab(newValue);
+        console.log("Cia selectedTab navig", newValue);
       }}
     >
       <BottomNavigationAction
         label="Hjem"
         icon={<RestoreIcon />}
-        component={LinkUI}
+        component={Link}
         to="/"
       />
 
       <BottomNavigationAction
         label="Tjenester"
         icon={<RestoreIcon />}
-        component={LinkUI}
+        component={Link}
         to="/about"
       />
     </BottomNavigation>
   );
-}
+};
+export default SimpleBottomNavigation;

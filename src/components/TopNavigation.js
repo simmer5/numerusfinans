@@ -17,9 +17,6 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     backgroundColor: "#171717",
   },
-  toolBar: {
-    //maxWidth: "100vw",
-  },
 
   logBox: {
     display: "flex",

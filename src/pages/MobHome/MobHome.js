@@ -8,31 +8,27 @@ import Divider from "@material-ui/core/Divider";
 import BottomNav from "../../components/BottomNavigation";
 
 import ContactIcons from "../../components/ContactIcons";
-import Logo from "../../components/logo";
+import Logo from "../../Logo/LogoWhite";
 
 const useStyles = makeStyles({
   mobContainer: {
-    backgroundColor: "#2d3436",
-    backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     height: "100vh",
-    //justifyContent: "center",
+    backgroundColor: "#2d3436",
+    backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
   },
   mobContentContainer: {
     display: "flex",
-    flexGrow: 1,
     flexDirection: "column",
+    flexGrow: 1,
     alignItems: "center",
     justifyContent: "center",
+    alignSelf: "strech",
+    height: "85%",
   },
-  navContainer: {
-    flexGrow: 0,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
+
   typo: {
     color: "white",
     width: "80%",
@@ -59,16 +55,15 @@ const MobHome = () => {
           <Logo width="45vw" />
           <Divider className={classes.divider} />
           <Typography align="center" className={classes.typo}>
-            Regnskap tjenester for stotre og melomstire bedrifter
+            Regnskap tjenester for stotre og melomstore bedrifter
           </Typography>
           <Box className={classes.iContainer}>
             <ContactIcons short />
           </Box>
         </Box>
       </Zoom>
-      <Box className={classes.navContainer}>
-        <BottomNav />
-      </Box>
+
+      <BottomNav />
     </Box>
   );
 };

@@ -7,17 +7,39 @@ import ContactIcons from "../components/ContactIcons";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  section: {
+  webSection: {
     borderBottom: "10px solid white",
     background: "#171717",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    height: "100vh",
+    //alignItems: "center",
+    justifyContent: "space-between",
+    height: "85vh",
     scrollSnapAlign: "center",
   },
+  mobSection: {
+    borderBottom: "10px solid white",
+    background: "#171717",
+    display: "flex",
+    flexDirection: "column",
+    //alignItems: "center",
+    justifyContent: "space-between",
+    //height: "85vh",
+    scrollSnapAlign: "center",
+    flexGrow: 1,
+    alignSelf: "stretch",
+  },
+
   contentContainer: {
-    marginTop: "20vh",
+    flexGrow: 1,
+    //flexShrink: 0,
+    alignSelf: "center",
+    display: "flex",
+    width: "100vw",
+    justifyContent: "center",
+  },
+  btnContainer: {
+    //marginTop: "20vh",
     alignSelf: "center",
     border: "4px solid white",
     padding: "1.5rem",
@@ -31,7 +53,7 @@ const useStyles = makeStyles({
       cursor: "pointer",
     },
   },
-  titleContainer: { fontSize: "3.5rem" },
+  titleContainer: { fontSize: "2.5rem" },
   modal: {
     display: "flex",
     alignItems: "center",
@@ -57,7 +79,7 @@ const useStyles = makeStyles({
   },
 });
 
-const HomePageSection = ({ title, description }) => {
+const HomePageSection = ({ title, description, mob, web }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   // const [modalData, setModalData] = useState("");
@@ -70,23 +92,55 @@ const HomePageSection = ({ title, description }) => {
     setOpen(false);
   };
   return (
-    <Box className={classes.section}>
-      <Box className={classes.ContactIconsContainer}>
-        <ContactIcons short />
-      </Box>
-      <Box className={classes.contentContainer} onClick={handleOpen}>
-        <Box className={classes.titleContainer}>{title}</Box>
-      </Box>
-      <Modal className={classes.modal} open={open} onClose={handleClose}>
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <div className={classes.titleContainer}>{title}</div>
-            <p>{description}</p>
-            <CloseIcon className={classes.closeIcon} onClick={handleClose} />
-          </div>
-        </Fade>
-      </Modal>
-    </Box>
+    <>
+      {web && (
+        <Box className={classes.webSection}>
+          <Box className={classes.ContactIconsContainer}>
+            <ContactIcons short />
+          </Box>
+          <Box className={classes.contentContainer}>
+            <Box className={classes.btnContainer} onClick={handleOpen}>
+              <Box className={classes.titleContainer}>{title}</Box>
+            </Box>
+          </Box>
+          <Modal className={classes.modal} open={open} onClose={handleClose}>
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <div className={classes.titleContainer}>{title}</div>
+                <p>{description}</p>
+                <CloseIcon
+                  className={classes.closeIcon}
+                  onClick={handleClose}
+                />
+              </div>
+            </Fade>
+          </Modal>
+        </Box>
+      )}
+      {/* ====== Mob section ========= */}
+      {mob && (
+        <Box className={classes.mobSection}>
+          <Box className={classes.contentContainer}>
+            <Box className={classes.btnContainer} onClick={handleOpen}>
+              <Box className={classes.titleContainer}>{title}</Box>
+            </Box>
+          </Box>
+
+          <Modal className={classes.modal} open={open} onClose={handleClose}>
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <div className={classes.titleContainer}>{title}</div>
+                <p>{description}</p>
+                <CloseIcon
+                  className={classes.closeIcon}
+                  onClick={handleClose}
+                />
+              </div>
+            </Fade>
+          </Modal>
+        </Box>
+      )}
+    </>
   );
 };
 

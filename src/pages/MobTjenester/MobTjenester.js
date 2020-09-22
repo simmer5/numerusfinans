@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Modal from "@material-ui/core/Modal";
 
 import BottomNav from "../../components/BottomNavigation";
+import Section from "../../components/HomePageSection";
 
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
@@ -15,68 +16,50 @@ import Pic1 from "../../pics/1.jpeg";
 import Pic2 from "../../pics/2.jpeg";
 import Pic3 from "../../pics/3.jpeg";
 import Pic4 from "../../pics/4.jpeg";
-import Logo from "../../components/logo";
+import Logo from "../../Logo/LogoWhite";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
+  mobContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "88vh",
     backgroundColor: "#2d3436",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    height: "100vh",
+    overflow: "scroll",
+    overflowY: "hidden",
+    scrollSnapType: "x mandatory",
+    scrollbarWidth: "thin",
   },
-  mobContentContainer: {
-    display: "flex",
+  boxContentContainer: {
+    alignSelf: "stretch",
     flexGrow: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  navContainer: {
-    flexGrow: 0,
+    //height: "85vh",
     display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-  logoBoxContainer: {
-    flexGrow: 0,
-    flexShrink: 0,
-    alignSelf: "flex-start",
-    //width: "100vw",
-    margin: "2rem",
-  },
-  contentContainer: {
-    flexGrow: 1,
-    justifyContent: "space-evenly",
-    display: " flex",
-    flexDirection: "column",
     width: "100vw",
-    alignItems: "center",
   },
-  content: {
-    padding: "1.5rem",
-    borderWidth: "4px",
-    borderStyle: "solid",
-    borderImage:
-      "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,50,231,1) 57%, rgba(0,212,255,1) 100%) 1",
-    cursor: "pointer",
-  },
-  titleContainer: { fontSize: "2.5rem" },
+
+  // mobContentContainer: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   flexGrow: 1,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   alignSelf: "strech",
+  //   height: "85%",
+  //   overflow: "scroll",
+  //   //overflowX: "hidden",
+  //   //overflowY: "hidden",
+  //   scrollSnapType: "y mandatory",
+  //   width: "100%",
+  //   scrollbarWidth: "thin",
+  // },
 }));
 
 const MobTjenester = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState("");
-
-  const contentBtn = (title) => {
-    return (
-      <Box className={classes.content}>
-        <Box className={classes.titleContainer}>{title}</Box>
-      </Box>
-    );
-  };
 
   const modals = [
     {
@@ -111,21 +94,25 @@ const MobTjenester = () => {
   };
 
   return (
-    <Box className={classes.container}>
+    <>
       <Zoom in={true}>
-        <Box component="div" className={classes.mobContentContainer}>
-          <Box component="div" className={classes.logoBoxContainer}>
-            <Logo width="20vw" />
-          </Box>
-          <Box className={classes.contentContainer}>
-            {contentBtn("Vakaras")}
+        <Box className={classes.mobContainer}>
+          <Box className={classes.boxContentContainer}>
+            {/* <Box component="div" className={classes.mobContentContainer}> */}
+            {/* <Logo width="20vw" /> */}
+
+            <Section mob title="Title 1" description="1 Descriptionas pirmas" />
+            <Section mob title="Title 2" description="2 Descriptionas pirmas" />
+            <Section mob title="Title 3" description="3 Descriptionas pirmas" />
+            <Section mob title="Title 4" description="3 Descriptionas pirmas" />
+            <Section mob title="Title 5" description="3 Descriptionas pirmas" />
+            {/* </Box> */}
           </Box>
         </Box>
       </Zoom>
-      <Box className={classes.navContainer}>
-        <BottomNav />
-      </Box>
-    </Box>
+
+      <BottomNav />
+    </>
   );
 };
 
