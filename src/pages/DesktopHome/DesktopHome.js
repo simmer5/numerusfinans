@@ -6,7 +6,6 @@ import Zoom from "@material-ui/core/Zoom";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
-import TopNav from "../../components/TopNavigation";
 import ContactIcons from "../../components/ContactIcons";
 
 import Logo from "../../Logo/LogoWhite";
@@ -38,7 +37,6 @@ const DesktopHome = () => {
   const classes = useStyles();
   return (
     <>
-      <TopNav />
       <Zoom in={true}>
         <Box className={classes.contentContainer}>
           <Logo width="45vw" />

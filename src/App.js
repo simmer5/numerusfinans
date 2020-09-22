@@ -3,6 +3,8 @@ import MobHome from "../src/pages/MobHome";
 import MobTjenester from "../src/pages/MobTjenester";
 import DesktopTjenester from "./pages/DesktopTlenester";
 import "./App.css";
+import TopNav from "./components/TopNavigation";
+import BottomNav from "./components/BottomNavigation";
 import DesktopHome from "./pages/DesktopHome";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -17,19 +19,19 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            {width < breakpoint ? <MobHome /> : <DesktopHome />}
-          </Route>
+    <BrowserRouter>
+      {width > breakpoint && <TopNav />}
+      <Switch>
+        <Route exact path="/">
+          {width < breakpoint ? <MobHome /> : <DesktopHome />}
+        </Route>
 
-          <Route path="/about">
-            {width < breakpoint ? <MobTjenester /> : <DesktopTjenester />}
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+        <Route path="/about">
+          {width < breakpoint ? <MobTjenester /> : <DesktopTjenester />}
+        </Route>
+      </Switch>
+      {width < breakpoint && <BottomNav />}
+    </BrowserRouter>
   );
 }
 

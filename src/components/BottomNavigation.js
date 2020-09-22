@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -7,6 +7,8 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
+  root: { color: "#ffffff" },
+
   bottomNav: {
     width: "100vw",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
@@ -15,13 +17,11 @@ const useStyles = makeStyles({
     height: "12vh",
   },
 });
-const LinkUI = forwardRef((props, ref) => (
-  <Link ref={ref} to="to" {...props} />
-));
 
 const SimpleBottomNavigation = () => {
   const classes = useStyles();
-  const [selectedTab, setSelectedTab] = useState(0);
+  const pathname = window.location.pathname;
+  const [selectedTab, setSelectedTab] = useState(pathname);
 
   return (
     <BottomNavigation
@@ -30,7 +30,6 @@ const SimpleBottomNavigation = () => {
       showLabels
       onChange={(e, newValue) => {
         setSelectedTab(newValue);
-        console.log("Cia selectedTab navig", newValue);
       }}
     >
       <BottomNavigationAction
@@ -38,6 +37,8 @@ const SimpleBottomNavigation = () => {
         icon={<RestoreIcon />}
         component={Link}
         to="/"
+        value="/"
+        classes={{ root: classes.root }}
       />
 
       <BottomNavigationAction
@@ -45,6 +46,8 @@ const SimpleBottomNavigation = () => {
         icon={<RestoreIcon />}
         component={Link}
         to="/about"
+        value="/about"
+        classes={{ root: classes.root }}
       />
     </BottomNavigation>
   );

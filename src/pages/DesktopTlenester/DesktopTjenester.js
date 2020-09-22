@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import TopNav from "../../components/TopNavigation";
+
 import Zoom from "@material-ui/core/Zoom";
 
 import HomePageSection from "../../components/HomePageSection";
@@ -50,7 +50,6 @@ const DesktopTjenester = () => {
 
   return (
     <>
-      <TopNav />
       <Zoom in={true}>
         <Box className={classes.boxContentContainer} component="div">
           {data.map((item, idx) => (

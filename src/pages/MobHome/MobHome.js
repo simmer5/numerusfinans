@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Zoom from "@material-ui/core/Zoom";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import BottomNav from "../../components/BottomNavigation";
 
 import ContactIcons from "../../components/ContactIcons";
 import Logo from "../../Logo/LogoWhite";
@@ -15,7 +14,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: "100vh",
+    height: "88vh",
     backgroundColor: "#2d3436",
     backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
   },
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "strech",
-    height: "85%",
+    height: "100%",
   },
 
   typo: {
@@ -62,8 +61,6 @@ const MobHome = () => {
           </Box>
         </Box>
       </Zoom>
-
-      <BottomNav />
     </Box>
   );
 };

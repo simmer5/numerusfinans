@@ -28,7 +28,6 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
     fontWeight: 500,
     fontSize: "2rem",
-    // margin: "0 1.2rem",
   },
 });
 
@@ -46,7 +45,7 @@ const TopNavigation = (props) => {
 
       <Toolbar variant="regular" className={classes.toolBar}>
         <Button
-          component={LinkUI}
+          component={Link}
           to="/"
           color="inherit"
           className={classes.button}
@@ -55,7 +54,7 @@ const TopNavigation = (props) => {
         </Button>
         <Button
           color="inherit"
-          component={LinkUI}
+          component={Link}
           to="/about"
           className={classes.button}
         >
