@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Zoom from "@material-ui/core/Zoom";
 
 import Section from "../../components/HomePageSection";
+import Data from "../../data/data.json";
 
 const useStyles = makeStyles((theme) => ({
   mobContainer: {
@@ -21,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   boxContentContainer: {
     alignSelf: "stretch",
     flexGrow: 1,
-    //height: "85vh",
     display: "flex",
     width: "100vw",
   },
@@ -31,19 +31,27 @@ const MobTjenester = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <Box
+      style={{
+        backgroundColor: "#2d3436",
+        backgroundImage: "linear-gradient(315deg, #2d3436 0%, #000000 74%)",
+      }}
+    >
       <Zoom in={true}>
         <Box className={classes.mobContainer}>
           <Box className={classes.boxContentContainer}>
-            <Section mob title="Title 1" description="1 Descriptionas pirmas" />
-            <Section mob title="Title 2" description="2 Descriptionas pirmas" />
-            <Section mob title="Title 3" description="3 Descriptionas pirmas" />
-            <Section mob title="Title 4" description="3 Descriptionas pirmas" />
-            <Section mob title="Title 5" description="3 Descriptionas pirmas" />
+            {Data.map((item, idx) => (
+              <Section
+                mob
+                key={idx}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Box>
         </Box>
       </Zoom>
-    </>
+    </Box>
   );
 };
 

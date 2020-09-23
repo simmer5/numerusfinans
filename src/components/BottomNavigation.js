@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import RestoreIcon from "@material-ui/icons/Restore";
+import WorkIcon from "@material-ui/icons/Work";
+import HomeIcon from "@material-ui/icons/Home";
 
 import { Link } from "react-router-dom";
 
@@ -34,7 +35,7 @@ const SimpleBottomNavigation = () => {
     >
       <BottomNavigationAction
         label="Hjem"
-        icon={<RestoreIcon />}
+        icon={<HomeIcon />}
         component={Link}
         to="/"
         value="/"
@@ -43,7 +44,7 @@ const SimpleBottomNavigation = () => {
 
       <BottomNavigationAction
         label="Tjenester"
-        icon={<RestoreIcon />}
+        icon={<WorkIcon />}
         component={Link}
         to="/about"
         value="/about"

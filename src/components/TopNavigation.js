@@ -31,16 +31,14 @@ const useStyles = makeStyles({
   },
 });
 
-const LinkUI = React.forwardRef((props, ref) => (
-  <Link ref={ref} to="/" {...props} />
-));
-
 const TopNavigation = (props) => {
   const classes = useStyles();
   return (
     <AppBar position="sticky" className={classes.topNav}>
       <Box className={classes.logBox}>
-        <Logo width="13vw" />
+        <Link to="/">
+          <Logo width="13vw" />
+        </Link>
       </Box>
 
       <Toolbar variant="regular" className={classes.toolBar}>
