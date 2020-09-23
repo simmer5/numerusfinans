@@ -5,6 +5,7 @@ import Fade from "@material-ui/core/Fade";
 import CloseIcon from "@material-ui/icons/Close";
 import ContactIcons from "../components/ContactIcons";
 import { makeStyles } from "@material-ui/core/styles";
+import Logo from "../Logo/LogoWhite";
 
 const useStyles = makeStyles({
   webSection: {
@@ -12,19 +13,19 @@ const useStyles = makeStyles({
     background: "#171717",
     display: "flex",
     flexDirection: "column",
-    //alignItems: "center",
+
     justifyContent: "space-between",
     height: "85vh",
     scrollSnapAlign: "center",
   },
   mobSection: {
     borderBottom: "10px solid white",
-    background: "#171717",
+
     display: "flex",
     flexDirection: "column",
-    //alignItems: "center",
+
     justifyContent: "space-between",
-    //height: "85vh",
+
     scrollSnapAlign: "center",
     flexGrow: 1,
     alignSelf: "stretch",
@@ -32,14 +33,13 @@ const useStyles = makeStyles({
 
   contentContainer: {
     flexGrow: 1,
-    //flexShrink: 0,
+
     alignSelf: "center",
     display: "flex",
     width: "100vw",
     justifyContent: "center",
   },
   btnContainer: {
-    //marginTop: "20vh",
     alignSelf: "center",
     border: "4px solid white",
     padding: "1.5rem",
@@ -59,6 +59,8 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  mobLogoContainer: { margin: "1rem" },
+  mobTitleContainer: { fontSize: "1.5rem" },
   paper: {
     borderWidth: "4px",
     borderStyle: "solid",
@@ -70,8 +72,20 @@ const useStyles = makeStyles({
     flexDirection: "column",
     width: "45vw",
   },
+  paperMob: {
+    borderWidth: "4px",
+    borderStyle: "solid",
+    borderImage:
+      "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,50,231,1) 57%, rgba(0,212,255,1) 100%) 1",
+    padding: "1.5rem",
+    backgroundColor: "#0B0B0B",
+    display: "flex",
+    flexDirection: "column",
+    width: "75vw",
+  },
   closeIcon: {
     alignSelf: "flex-end",
+    cursor: "pointer",
   },
   ContactIconsContainer: {
     alignSelf: "flex-end",
@@ -96,7 +110,13 @@ const HomePageSection = ({ title, description, mob, web }) => {
       {web && (
         <Box className={classes.webSection}>
           <Box className={classes.ContactIconsContainer}>
-            <ContactIcons short />
+            <ContactIcons
+              short
+              anchorVertical="bottom"
+              anchorHorizontal="center"
+              transformVertical="top"
+              transformHorizontal="center"
+            />
           </Box>
           <Box className={classes.contentContainer}>
             <Box className={classes.btnContainer} onClick={handleOpen}>
@@ -120,16 +140,34 @@ const HomePageSection = ({ title, description, mob, web }) => {
       {/* ====== Mob section ========= */}
       {mob && (
         <Box className={classes.mobSection}>
-          <Box className={classes.contentContainer}>
-            <Box className={classes.btnContainer} onClick={handleOpen}>
-              <Box className={classes.titleContainer}>{title}</Box>
-            </Box>
+          <Box className={classes.mobLogoContainer}>
+            <Logo width="25vw" />
           </Box>
 
+          <Box className={classes.contentContainer}>
+            <Box className={classes.btnContainer} onClick={handleOpen}>
+              <Box className={classes.mobTitleContainer}>{title}</Box>
+            </Box>
+          </Box>
+          <Box
+            style={{
+              display: "flex",
+              alignSelf: "center",
+              marginBottom: "1rem",
+            }}
+          >
+            <ContactIcons
+              short
+              anchorVertical="top"
+              anchorHorizontal="center"
+              transformVertical="bottom"
+              transformHorizontal="center"
+            />
+          </Box>
           <Modal className={classes.modal} open={open} onClose={handleClose}>
             <Fade in={open}>
-              <div className={classes.paper}>
-                <div className={classes.titleContainer}>{title}</div>
+              <div className={classes.paperMob}>
+                <div className={classes.mobTitleContainer}>{title}</div>
                 <p>{description}</p>
                 <CloseIcon
                   className={classes.closeIcon}

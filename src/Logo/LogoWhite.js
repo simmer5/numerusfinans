@@ -2,7 +2,7 @@ import React from "react";
 
 const logoWhite = ({ width }) => {
   return (
-    <div>
+    <>
       <svg
         width={width}
         //height="264"
@@ -49,7 +49,7 @@ const logoWhite = ({ width }) => {
           strokeWidth="8"
         />
       </svg>
-    </div>
+    </>
   );
 };
 

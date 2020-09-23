@@ -47,14 +47,20 @@ const useStyles = makeStyles(
   },
   { name: "MuiPopover" }
 );
-const ContactIcons = ({ long, short }) => {
+const ContactIcons = ({
+  long,
+  short,
+  anchorVertical,
+  anchorHorizontal,
+  transformVertical,
+  transformHorizontal,
+}) => {
   const classes = useStyles();
 
   const [value, setValue] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpen = (e) => {
-    //const kablys = document.querySelector("#kablys");
     setAnchorEl(e.currentTarget);
     setValue(e.currentTarget.value);
   };
@@ -62,7 +68,6 @@ const ContactIcons = ({ long, short }) => {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-  //const id = open ? "simple-popover" : undefined;
 
   return (
     <>
@@ -95,7 +100,6 @@ const ContactIcons = ({ long, short }) => {
               <CallIcon />
             </Box>
             <Box
-              id="kablys"
               component="button"
               className={classes.iFrame}
               onClick={handleOpen}
@@ -118,12 +122,12 @@ const ContactIcons = ({ long, short }) => {
               anchorEl={anchorEl}
               onClose={handleClose}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "center",
+                vertical: `${anchorVertical}`,
+                horizontal: `${anchorHorizontal}`,
               }}
               transformOrigin={{
-                vertical: "top",
-                horizontal: "center",
+                vertical: `${transformVertical}`,
+                horizontal: `${transformHorizontal}`,
               }}
             >
               <div className={classes.popTitle}>{value}</div>

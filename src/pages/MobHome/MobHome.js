@@ -54,10 +54,16 @@ const MobHome = () => {
           <Logo width="45vw" />
           <Divider className={classes.divider} />
           <Typography align="center" className={classes.typo}>
-            Regnskap tjenester for stotre og melomstore bedrifter
+            Regnskap tjenester for store og melomstore bedrifter
           </Typography>
           <Box className={classes.iContainer}>
-            <ContactIcons short />
+            <ContactIcons
+              short
+              anchorVertical="bottom"
+              anchorHorizontal="center"
+              transformVertical="top"
+              transformHorizontal="center"
+            />
           </Box>
         </Box>
       </Zoom>
